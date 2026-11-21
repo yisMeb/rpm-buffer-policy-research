@@ -1,0 +1,18 @@
+parameter,value
+frozen,true
+reporting_interval_s,5
+observation_s,10800
+recovery_s,9000
+outage_start_s,1800
+outage_minutes,"[0, 5, 15, 30, 60, 120]"
+buffer_capacities,"[120, 360, 720]"
+recovery_rates_per_s,"[1, 5, 10]"
+episode_conditions,"{""low"": {""episodes_per_hour"": 0.5, ""duration_s"": [30, 90]}, ""medium"": {""episodes_per_hour"": 1.5, ""duration_s"": [45, 180]}, ""high"": {""episodes_per_hour"": 3.0, ""duration_s"": [60, 240]}}"
+seeds,"[101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130]"
+pilot_seeds,"[101, 102]"
+episode_deadlines_s,"[60, 300, 900]"
+reconnect_delay_s,5
+network_repeats,1
+patient_id,"""synthetic-001"""
+version,2
+episode_sensitivity_models,"[""fixed_uniform"", ""clustered_long""]"

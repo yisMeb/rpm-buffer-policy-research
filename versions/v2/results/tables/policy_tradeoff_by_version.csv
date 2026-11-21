@@ -1,0 +1,25 @@
+version,comparison,metric,paired_mean,n_paired_cells
+1,P4 - P2,aoi_mean,-13.500539256591944,4860
+1,P4 - P3,aoi_mean,1.0575883154244978,4860
+1,P4 - P2,episode_preservation,0.11594742191964415,4482
+1,P4 - P3,episode_preservation,0.11219252797956503,4482
+1,P4 - P2,episode_within_60s,0.0,4482
+1,P4 - P3,episode_within_60s,0.0,4482
+1,P4 - P2,episode_within_300s,0.005572334901038605,4482
+1,P4 - P3,episode_within_300s,-3.086419753086419e-05,4482
+1,P4 - P2,episode_within_900s,0.02688738559108929,4482
+1,P4 - P3,episode_within_900s,0.005167730646125707,4482
+1,P4 - P2,episode_delay,88.98819262219561,4359
+1,P4 - P3,episode_delay,272.6197433039044,4323
+2,P4 - P2,aoi_mean,-13.50028749428437,4860
+2,P4 - P3,aoi_mean,1.0578400777320727,4860
+2,P4 - P2,episode_preservation,0.11544015896957074,4482
+2,P4 - P3,episode_preservation,0.11194061052721183,4482
+2,P4 - P2,episode_within_60s,0.0,4482
+2,P4 - P3,episode_within_60s,0.0,4482
+2,P4 - P2,episode_within_300s,0.005466939862364699,4482
+2,P4 - P3,episode_within_300s,0.0,4482
+2,P4 - P2,episode_within_900s,0.026779381320957207,4482
+2,P4 - P3,episode_within_900s,0.005031536250672053,4482
+2,P4 - P2,episode_delay,87.94074494019563,4359
+2,P4 - P3,episode_delay,272.030023193745,4323

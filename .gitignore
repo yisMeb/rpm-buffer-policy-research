@@ -1,0 +1,11 @@
+# Full event exports exceed GitHub's per-file size limit. Keep them locally;
+# regenerate them with the export scripts documented in README.md.
+/results/raw/main_events.csv.gz
+/versions/v1/results/raw/main_events.csv.gz
+/versions/v2/results/raw/main_events.csv.gz
+
+# Local Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/

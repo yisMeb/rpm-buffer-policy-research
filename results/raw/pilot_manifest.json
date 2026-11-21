@@ -1,0 +1,9 @@
+{
+  "runs": 192,
+  "runtime_s": 3.470991199999844,
+  "seeds": [
+    101,
+    102
+  ],
+  "config": "C:\\Users\\asus\\Documents\\GitHub\\Smart-IoT-Patient-Monitoring-System\\research\\config\\experiments.yaml"
+}

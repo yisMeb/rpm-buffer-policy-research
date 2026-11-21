@@ -1,0 +1,25 @@
+# Version 2 methodology
+
+## Design and comparators
+
+This source-informed local discrete-event simulation pairs synthetic acquisitions and connectivity traces across P1–P4. The frozen main design in `config/experiments_v2.yaml` retains the Version 1 factorial grid: 3 capacities × 6 outage durations × 3 modeled service rates × 3 episode conditions × 30 seeds × 4 policies. One seed is the independent stochastic cluster across matched scenarios. Acquisition lasts three hours and recovery continues for 2.5 hours. AoI uses the acquisition window, eventual delivery uses the recovery tail. No real patients, hardware, AWS or operational network are observed.
+
+P1 has no offline buffer. A reading acquired while connected waits in one transient send position for the next *shared* service slot, disconnection before that slot loses it. P2 is FIFO/drop-newest, P3 FIFO/drop-oldest, P4 preferentially evicts the oldest threshold-routine reading and rejects a routine arrival when all stored readings are threshold-abnormal. If all are abnormal, a new abnormal arrival evicts the oldest abnormal. All retained items transmit FIFO. P4 capacity, bandwidth and rule are unchanged from Version 1. At equal times a service slot precedes acquisition for all policies. Service slots are spaced by 1/rate seconds, connection availability and the five-second reconnection delay gate them. Every completed connected transmission succeeds. Rates of 1, 5 and 10 readings/s are modeled, not measured.
+
+## Episodes and labels
+
+The baseline generator draws Poisson episode counts at 0.5, 1.5 or 3 episodes/hour, uniform start times and condition-specific duration ranges of 30–90, 45–180 or 60–240 seconds. Baseline heart rate, SpO2 and temperature have smooth temporal variation plus seeded noise. Episodes perturb one of those signals. Every generated episode has an immutable ID, true onset and end, even if it overlaps another episode or has no acquisition sample. Each reading records *all* active episode IDs, simultaneous perturbations combine. A separate threshold label uses heart rate <50 or >100 bpm, SpO2 <92%, or temperature >38°C. These are experimental assumptions, not clinical criteria. P4 uses only that measurement-time threshold label, ground-truth episode IDs are used only for evaluation.
+
+Episode-generation sensitivity uses two pre-specified alternatives independent of policy and outage: `fixed_uniform` fixes the count to the rounded expectation with uniform starts, `clustered_long` uses the fixed count, beta(2,2) starts and doubled durations. Neither is patient-derived. The main design uses `poisson_uniform`. A supplementary repeated-outage grid is also kept separate from the main design.
+
+## Outcomes
+
+AoI(t) = t − the freshest acquisition timestamp received by t. A late historical receipt cannot roll freshness backward. A virtual timestamp-zero update defines initial age. Mean AoI is the exact time integral divided by the acquisition horizon, median and p95 are time-weighted quantiles, and peak is the largest pre-update age. Overall, threshold-normal and threshold-abnormal delivery ratios use generated readings as denominators.
+
+The co-primary episode outcomes are eventual preservation and delivery within 60, 300 and 900 seconds of *ground-truth onset*. Each has all generated ground-truth episodes as denominator, including episodes with no sampled reading. Preservation means at least one episode-associated reading received, regardless of whether its value crosses a threshold, it does not imply diagnosis. Complete preservation, total loss and within-episode preserved fraction measure historical completeness. Conditional delay is first associated receipt minus true onset and must be read beside deadline and loss rates because undelivered episodes have no observed delay.
+
+Queue occupancy is recorded after every acquisition whether detailed event logging is on or off. Its mean is the arithmetic mean of acquisition-time occupancy samples, peak is the maximum sample. Network-disconnection losses, overflow rejection/eviction losses and no-buffer contention losses are disjoint. Pending readings are separate at the simulation boundary, total losses = dropped + pending. Backlog recovery time is measured from the final reconnection boundary to the first empty queue, is zero if already empty, and is missing if the queue remains at the boundary.
+
+## Statistics and integrity
+
+Every run checks generated = delivered + dropped + pending and unique delivery. Per-scenario summaries use seed-level means, SDs, medians, IQRs and 95% normal intervals with actual nonmissing counts. P4 paired differences average matched scenario differences within each seed, then bootstrap the 30 seed clusters 2,000 times (bootstrap seed 2026). This retains within-seed dependence across scenarios. Pooled results describe this balanced grid, not a population. Zero-episode ratios remain missing, never imputed as success. Version 1 files are archived under `versions/v1`, Version 2 outputs are written only to `versions/v2`.
