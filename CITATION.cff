@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Information Freshness versus Abnormal Event Preservation in Remote Patient Monitoring Under Intermittent Connectivity: A Comparative Simulation Study"
+authors:
+  - family-names: Mebrate
+    given-names: Yisak
+    affiliation: "Independent Researcher"
+type: software
+version: "2.0.0"
+repository-code: "https://github.com/yisMeb/rpm-buffer-policy-research"
+license: MIT
+keywords:
+  - Remote Patient Monitoring
+  - Internet of Things
+  - Age of Information
+  - Buffer Management
+  - Intermittent Connectivity
+  - Discrete-Event Simulation
