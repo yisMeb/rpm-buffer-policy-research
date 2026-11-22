@@ -1,10 +1,12 @@
+
 cff-version: 1.2.0
-message: "If you use this software, please cite it using the metadata below."
-title: "Information Freshness versus Abnormal Event Preservation in Remote Patient Monitoring Under Intermittent Connectivity: A Comparative Simulation Study"
+message: "If you use this software in your research, please cite the associated paper."
+title: "Information Freshness Versus Abnormal Event Preservation in Remote Patient Monitoring Under Intermittent Connectivity: A Comparative Simulation Study"
 authors:
-  - family-names: Mebrate
-    given-names: Yisak
+  - family-names: Desalegn
+    given-names: Yisak Mebrate
     affiliation: "Independent Researcher"
+    orcid: "https://orcid.org/0009-0004-0944-334X"
 type: software
 version: "2.0.0"
 repository-code: "https://github.com/yisMeb/rpm-buffer-policy-research"
@@ -16,3 +18,18 @@ keywords:
   - Buffer Management
   - Intermittent Connectivity
   - Discrete-Event Simulation
+  - Digital Health
+  - Abnormal Event Preservation
+
+preferred-citation:
+  type: unpublished
+  authors:
+    - family-names: Desalegn
+      given-names: Yisak Mebrate
+      orcid: "https://orcid.org/0009-0004-0944-334X"
+  title: "Information Freshness Versus Abnormal Event Preservation in Remote Patient Monitoring Under Intermittent Connectivity: A Comparative Simulation Study"
+  year: 2026
+  doi: "10.5281/zenodo.24442131"
+  url: "https://zenodo.org/records/24442131"
+  publisher: Zenodo
+  notes: "preprint"
